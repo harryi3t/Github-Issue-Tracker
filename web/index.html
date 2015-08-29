@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+    <script src="jquery-2.1.4.min.js"></script>
+    <script src="app.js"></script>
+    <style>
+        .loadingImg{
+            background-image: url(grid-loading.gif);
+            width: 20px;
+            background-repeat: no-repeat
+        }
+        td,th{
+            padding:10px;
+        }
+        #errorMsg{
+            color:red;
+        }
+    </style>
+</head>
+
+<body>
+    Input The Github Repository <input type="text" placeholder="https://github.com/Shippable/support" size="50"
+                                       onchange="callApi()" id="urlInput"/>
+    <span id="errorMsg"></span>
+    <table border="1">
+        <tbody>
+            <tr>
+                <th>Total Open Issues</th>
+                <td id="row1" ></td>
+            </tr>
+            <tr>
+                <th>Last 24 Hours</th>
+                <td id="row2" ></td>
+            </tr>
+            <tr>
+                <th>last 24 - Last 7 days</th>
+                <td id="row3" ></td>
+            </tr>
+            <tr>
+                <th>More than 7 days</th>
+                <td id="row4" ></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
