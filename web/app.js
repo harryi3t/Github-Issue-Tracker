@@ -7,7 +7,7 @@
     date7daysBefore = new Date(new Date().getTime() - (7 * 24 * 60 * 60 * 1000));
 
     url = $("#urlInput").val().trim().
-        match("(http:\/\/|https:\/\/)?github\.com\/([a-zA-z_0-9]+\/[a-zA-Z_0-9]+)\/?");
+        match("(http:\/\/|https:\/\/)?github\.com\/([a-zA-z_\\-0-9]+\/[a-zA-Z_\\-0-9]+)\/?");
     if (url && url[0] && $("#urlInput").val() == url[0]) {
         $("#errorMsg").hide();
 
