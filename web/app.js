@@ -62,10 +62,10 @@ function callAPI() {
 
 // Inserts the values in the Rows
 function updateRows(row1,row2,row3,row4){
-	$("#row1").html(row1?row1:"");
-	$("#row2").html(row2?row2:"");
-	$("#row3").html(row3?row3:"");
-	$("#row4").html(row4?row4:"");
+	$("#row1").html(row1!=undefined?row1:"");
+	$("#row2").html(row2!=undefined?row2:"");
+	$("#row3").html(row3!=undefined?row3:"");
+	$("#row4").html(row4!=undefined?row4:"");
 }
 
 // Removes the Loading GIF from the rows
