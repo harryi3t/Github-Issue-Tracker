@@ -1,15 +1,17 @@
-﻿// Global variables holding the count of issues.
-total = 0, last24Hours = 0, last7Days = 0, after7Days = 0;
-
-// Github API sends limited no of results (100 max), so need to request in form of pages 
-pageNo = 1;
-
-//Checks the URL entered.
+﻿//Checks the URL entered.
 function checkURL() {
 	url = $("#urlInput").val().trim().
         match("(http:\/\/|https:\/\/)?github\.com\/([a-zA-z_\\-0-9]+\/[a-zA-Z_\\-0-9]+)\/?");
     if (url && url[0] && $("#urlInput").val() == url[0]) {
         $("#errorDiv").hide();
+		
+		// Github API sends limited no of results (100 max), so need to request in form of pages 
+		pageNo = 1;
+		// Global variables holding the count of issues.
+		total = 0, last24Hours = 0, last7Days = 0, after7Days = 0;
+		date24HoursBefore = new Date(new Date().getTime() - (24 * 60 * 60 * 1000));
+		date7daysBefore = new Date(new Date().getTime() - (7 * 24 * 60 * 60 * 1000));
+		
         callAPI();
     }
     else {
@@ -20,15 +22,14 @@ function checkURL() {
     }
 }
 
+
 // Calls the Github API (api.github.com)
 function callAPI() {
-	date24HoursBefore = new Date(new Date().getTime() - (24 * 60 * 60 * 1000));
-    date7daysBefore = new Date(new Date().getTime() - (7 * 24 * 60 * 60 * 1000));
     addLoadingGIF();
-    $.get("https://api.github.com/repos/" + url[2] + "/issues?state=all&per_page=100&page=" + pageNo)
+	var apiURL = "https://api.github.com/repos/" + url[2] + "/issues?state=all&per_page=100&page=" + pageNo;
+    $.get(apiURL)
         .done(function (d) {
-            console.log(d);
-            x = d;
+			console.log(apiURL);
             total += d.length;
             for (var i = 0 ; i < d.length ; i++) {
                 var thisDate = new Date(d[i].created_at);
@@ -53,6 +54,7 @@ function callAPI() {
 		.fail(function(e){
 			$("#errorMesg").html("Error : "+e.status+" : "+e.statusText);
 			$("#errorDiv").show();
+			updateRows();
 			removeLoadingGIF();
 		});
 		
