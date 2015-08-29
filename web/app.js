@@ -63,5 +63,14 @@ function callPage() {
                 $("#row3").removeClass("loadingImg");
                 $("#row4").removeClass("loadingImg");
             }
-        });
+        })
+		.fail(function(e){
+			$("#errorMsg").html("Error : "+e.status+" : "+e.statusText);
+			$("#errorMsg").show();
+			$("#row1").removeClass("loadingImg");
+			$("#row2").removeClass("loadingImg");
+			$("#row3").removeClass("loadingImg");
+			$("#row4").removeClass("loadingImg");
+		});
+		
 }
