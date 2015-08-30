@@ -26,7 +26,7 @@ function checkURL() {
 // Calls the Github API (api.github.com)
 function callAPI() {
     addLoadingGIF();
-	var apiURL = "https://api.github.com/repos/" + url[2] + "/issues?state=all&per_page=100&page=" + pageNo;
+	var apiURL = "https://api.github.com/repos/" + url[2] + "/issues?state=open&per_page=100&page=" + pageNo;
     $.get(apiURL)
         .done(function (d) {
 			console.log(apiURL);
