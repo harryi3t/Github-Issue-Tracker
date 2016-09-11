@@ -4,6 +4,8 @@ This was a programming assignment for a job (Software Developer) @ shippable.com
 ### Live Application
 Website is live at [Heroku]
 
+Now also available on http://harryi3t.github.io/Github-Issue-Tracker/
+
 ## Explanation to Solution
 When the user inputs the ``` url ```, it's matched using regex. Follwing patterns are allowed
 ``` 
