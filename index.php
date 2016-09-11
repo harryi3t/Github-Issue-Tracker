@@ -1,4 +1,4 @@
 <?php
 
-require('home.html');
+require('index.html');
 
